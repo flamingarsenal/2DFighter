@@ -1,5 +1,9 @@
 #include <SDL2/SDL.h>
 #include <stdio.h>
+#include "game_logic.h"
+
+#define SCREEN_WIDTH 800
+#define SCREEN_HEIGHT 600
 
 int main() {
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_EVENTS) != 0) {
@@ -10,7 +14,7 @@ int main() {
     SDL_Window* window = SDL_CreateWindow("2DFighter",
                                           SDL_WINDOWPOS_UNDEFINED,
                                           SDL_WINDOWPOS_UNDEFINED,
-                                          600, 800,
+                                          SCREEN_WIDTH, SCREEN_HEIGHT,
                                           SDL_WINDOW_SHOWN);
     if (!window) {
         printf("SDL_CreateWindow Error: %s\n", SDL_GetError());
@@ -26,6 +30,8 @@ int main() {
         return 1;
     }
 
+    init_game(SCREEN_WIDTH, SCREEN_HEIGHT);
+
     int quit = 0;
     SDL_Event e;
 
@@ -35,19 +41,8 @@ int main() {
             if (e.type == SDL_QUIT) {
                 quit = 1;
             }
-            if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE) {
-                quit = 1;
-            }
+            update(e);
         }
-
-        // Clear screen
-        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-        SDL_RenderClear(renderer);
-
-        // TODO: draw sprites, backgrounds, etc.
-
-        // Present frame
-        SDL_RenderPresent(renderer);
     }
 
     // Cleanup

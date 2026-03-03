@@ -8,6 +8,7 @@
 
 typedef enum {
     ANIM_IDLE,
+    ANIM_JUMP,
     ANIM_CROUCH,
     ANIM_WALK,
     ANIM_PUNCH_HIGH_UP,
@@ -53,5 +54,6 @@ extern GameState game; // declare the global gamestate
 
 void init_player(Player *p, int startX, int startY, int facing);
 void init_game(int w, int h);
+void update(SDL_Event event);
 
 #endif
