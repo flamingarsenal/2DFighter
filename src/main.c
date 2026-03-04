@@ -1,10 +1,8 @@
 #include <SDL2/SDL.h>
 #include <stdio.h>
+#include "main.h"
 #include "input.h"
 #include "game_logic.h"
-
-#define SCREEN_WIDTH 800
-#define SCREEN_HEIGHT 600
 
 int main() {
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_EVENTS) != 0) {
@@ -43,6 +41,7 @@ int main() {
                 quit = 1;
             }
             inputHandler(e);
+            update();
         }
     }
 

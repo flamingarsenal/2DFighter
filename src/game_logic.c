@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include "game_logic.h"
+#include "physics.h"
 
 #define START_DISTANCE 50 // distance from the center each player starts the round at (in pixels)
-#define GROUND_Y 100
 
 GameState game; // define the global gamestate
 
@@ -42,5 +42,9 @@ void init_game(int w, int h) {
     game.round = 1;
     game.time = 60; // one minute
     game.isPaused = 0; // false
+}
+
+void update() {
+    physicsUpdate(&game.player1);
 }
 
