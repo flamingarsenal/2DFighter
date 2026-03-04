@@ -1,9 +1,7 @@
 #ifndef GAME_LOGIC_H
 #define GAME_LOGIC_H
 
-#include <SDL2/SDL.h>
-
-#define PLAYER_WIDTH 64
+#define PLAYER_WIDTH 128
 #define PLAYER_HEIGHT 128
 
 typedef enum {
@@ -54,6 +52,5 @@ extern GameState game; // declare the global gamestate
 
 void init_player(Player *p, int startX, int startY, int facing);
 void init_game(int w, int h);
-void update(SDL_Event event);
 
 #endif

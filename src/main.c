@@ -1,5 +1,6 @@
 #include <SDL2/SDL.h>
 #include <stdio.h>
+#include "input.h"
 #include "game_logic.h"
 
 #define SCREEN_WIDTH 800
@@ -41,7 +42,7 @@ int main() {
             if (e.type == SDL_QUIT) {
                 quit = 1;
             }
-            update(e);
+            inputHandler(e);
         }
     }
 
