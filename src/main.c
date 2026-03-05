@@ -38,6 +38,11 @@ int main() {
     SDL_Event e;
 
     while (!quit) {
+        // reset the players x velocity every frame
+        // this is done so that if no key is pressed the player defaults to standing still
+        // and if a key IS pressed the input handler overwrites it later
+        game.player1.vx = 0;
+        game.player1.anim = ANIM_IDLE;
         // Handle events
         while (SDL_PollEvent(&e)) {
             if (e.type == SDL_QUIT) {

@@ -4,7 +4,7 @@
 #include <SDL2/SDL_events.h>
 #include <SDL2/SDL_keycode.h>
 
-#define MOVEMENT_SPEED 30 // pixels per second
+#define MOVEMENT_SPEED 5 // pixels per second
 #define JUMP_SPEED 20
 
 void inputHandler(SDL_Event event) {
@@ -32,23 +32,6 @@ void inputHandler(SDL_Event event) {
             if (game.player1.anim != ANIM_JUMP) {
                 game.player1.vx = 0;
                 game.player1.anim = ANIM_CROUCH;
-            }
-            break;
-        }
-    }
-    else if (event.type == SDL_KEYUP) {
-        switch (event.key.keysym.sym) {
-        case SDLK_RIGHT:
-        case SDLK_LEFT:
-            // stop horizontal movement when key released
-            if (game.player1.anim == ANIM_WALK) {
-                game.player1.vx = 0;
-                game.player1.anim = ANIM_IDLE;
-            }
-            break;
-        case SDLK_DOWN:
-            if (game.player1.anim == ANIM_CROUCH) {
-                game.player1.anim = ANIM_IDLE;
             }
             break;
         }
