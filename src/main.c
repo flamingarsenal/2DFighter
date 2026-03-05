@@ -4,7 +4,10 @@
 #include "input.h"
 #include "game_logic.h"
 
+#define FRAMERATE 60;
+
 int main() {
+    int delay = 1000 / FRAMERATE; // delay in ms required to acheive desired fps
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_EVENTS) != 0) {
         printf("SDL_Init Error: %s\n", SDL_GetError());
         return 1;
@@ -41,8 +44,9 @@ int main() {
                 quit = 1;
             }
             inputHandler(e);
-            update();
         }
+        update(renderer);
+        SDL_Delay(delay);
     }
 
     // Cleanup

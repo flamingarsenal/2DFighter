@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "game_logic.h"
 #include "physics.h"
+#include "render.h"
 
 #define START_DISTANCE 50 // distance from the center each player starts the round at (in pixels)
 
@@ -44,7 +45,8 @@ void init_game(int w, int h) {
     game.isPaused = 0; // false
 }
 
-void update() {
+void update(SDL_Renderer *renderer) {
     physicsUpdate(&game.player1);
+    renderGame(renderer);
 }
 
