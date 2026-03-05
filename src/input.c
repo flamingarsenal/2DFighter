@@ -8,6 +8,13 @@
 #define JUMP_SPEED 20
 
 void inputHandler(SDL_Event event) {
+    // reset the players x velocity at first
+    // this is done so that if no key is pressed the player defaults to standing still (inless they're mid air)
+    // and if a key IS pressed the input handler overwrites it later
+    if (game.player1.anim != ANIM_JUMP) {
+        game.player1.vx = 0;
+        game.player1.anim = ANIM_IDLE;
+    }
     if (event.type == SDL_KEYDOWN) {
         switch (event.key.keysym.sym) {
         case SDLK_RIGHT:
